@@ -1,28 +1,22 @@
 class Solution {
     public int search(int[] nums, int target) {
-
-       int i =0;
-        int j = nums.length-1;
-        int ans = binary(i,j,nums,target);
-        
+        int ans = binary(0,nums.length-1,target,nums);
         return ans;
-        
     }
     
-    public static int binary(int low , int high , int [] arr, int target){
-        if(low>high){
+    public int binary(int left,int right,int target,int[] nums){
+        if(right<left){
             return -1;
         }
-    int mid = (low+high)/2;
-        if(arr[mid]==target){
+        int mid = (left+right)/2;
+        if(target == nums[mid]){
             return mid;
         }
-        else if(arr[mid]>target){
-            return binary(low , mid-1 , arr, target);
+        else if(nums[mid]>target){
+            return binary(left,mid-1,target,nums);
         }
         else{
-             return binary(mid+1 , high , arr, target);
+            return binary(mid+1,right,target,nums);
         }
     }
-    
 }
