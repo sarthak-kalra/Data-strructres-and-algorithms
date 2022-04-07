@@ -1,30 +1,14 @@
 class Solution {
     public int missingNumber(int[] nums) {
-        Arrays.sort(nums);
+        int sum = 0;
         for (int i =0;i<nums.length;i++){
-            int ans = binary(nums,0,nums.length-1,i);
-            if(ans==-1){
-                return i;
-            }
+            sum = sum-nums[i];
+            sum = sum + i;
+            
         }
-        return nums.length;
+        sum = sum+nums.length;
+        return sum;
     }
     
-        public static int binary(int[] arr,int left,int right,int val){
-           
-           if(left>right){
-               return -1;
-           }
-           int mid = (left+right)/2;
-           
-           if(arr[mid]==val){
-               return mid;
-           }
-           else if(arr[mid]>val){
-               return binary(arr,left,mid-1,val);
-           }
-           else{
-               return binary(arr,mid+1,right,val);
-           }
-       }
+       
 }
