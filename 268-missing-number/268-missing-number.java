@@ -2,7 +2,7 @@ class Solution {
     public int missingNumber(int[] nums) {
         Arrays.sort(nums);
         for (int i =0;i<nums.length;i++){
-            int ans = binary(nums,0,nums.length,i);
+            int ans = binary(nums,0,nums.length-1,i);
             if(ans==-1){
                 return i;
             }
