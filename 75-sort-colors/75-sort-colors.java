@@ -1,17 +1,14 @@
 class Solution {
     public void sortColors(int[] arr) {
-        for(int front =0;front<arr.length;front++){
-            int min = Integer.MAX_VALUE;
-            int mini = 0;
-            for(int j =front;j<arr.length;j++){
-                if(arr[j]<min){
-                    min = arr[j];
-                    mini = j;
-                }
+        for (int i = 1; i<arr.length;i++){
+            int j = i-1;
+            int temp = arr[i];
+            while(j>=0&&temp<arr[j]){
+                arr[j+1]=arr[j];
+                j--;
             }
-            int temp = arr[front];
-            arr[front]= min;
-            arr[mini]= temp;
+            arr[j+1]= temp;
+            
         }
     }
 }
